@@ -204,8 +204,9 @@
             </div>
         </section>
 
-        <section id="view-login" class="view-section w-full max-w-md mx-auto">
-            <div class="glass-card rounded-2xl p-8 w-full mt-4 shadow-2xl border-t-4 border-amber-500 bg-gradient-to-b from-white to-[#fcfaf5] dark:from-gray-800 dark:to-gray-900 relative overflow-hidden">
+        <!-- my-auto ditambahkan ke view-login di bawah ini agar vertically centered (ke tengah) -->
+        <section id="view-login" class="view-section w-full max-w-md mx-auto my-auto">
+            <div class="glass-card rounded-2xl p-8 w-full shadow-2xl border-t-4 border-amber-500 bg-gradient-to-b from-white to-[#fcfaf5] dark:from-gray-800 dark:to-gray-900 relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-amber-200/40 to-transparent dark:from-amber-600/20 rounded-bl-[100px] pointer-events-none"></div>
                 <div class="absolute bottom-0 left-0 w-40 h-40 bg-gradient-to-tr from-amber-100/60 to-transparent dark:from-amber-800/20 rounded-tr-[100px] pointer-events-none"></div>
 
@@ -223,7 +224,8 @@
                         <div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
                             <i class="fa-solid fa-key text-amber-500/50 dark:text-amber-500/40"></i>
                         </div>
-                        <input type="password" id="input-niy" class="bg-white dark:bg-gray-800/80 border border-gray-200 dark:border-gray-600 text-black dark:text-white text-lg font-bold rounded-xl focus:ring-2 focus:ring-amber-500 block w-full pl-11 p-3.5 outline-none text-center relative z-20 transition-all shadow-inner" placeholder="••••••">
+                        <!-- px-11 tracking-widest ditambahkan agar padding seimbang dengan ikon dan titik center secara sempurna -->
+                        <input type="password" id="input-niy" class="bg-white dark:bg-gray-800/80 border border-gray-200 dark:border-gray-600 text-black dark:text-white text-lg font-bold rounded-xl focus:ring-2 focus:ring-amber-500 block w-full px-11 py-3.5 tracking-widest outline-none text-center relative z-20 transition-all shadow-inner" placeholder="••••••">
                     </div>
                 </div>
                 
