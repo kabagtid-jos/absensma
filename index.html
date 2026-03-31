@@ -2,9 +2,21 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMARTIS - SMA Unggulan Abu Zairi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Abzensi - SMA Unggulan Abu Zairi</title>
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://i.ibb.co.com/JwpFHfqM/Icon-App-Absen-SMA.png">
+    <link rel="apple-touch-icon" href="https://i.ibb.co.com/JwpFHfqM/Icon-App-Absen-SMA.png">
+    
+    <!-- PWA / Add to Home Screen Setup -->
+    <meta name="theme-color" content="#f59e0b">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Abzensi SMA">
+    <link rel="manifest" href='data:application/manifest+json;charset=utf-8,%7B%22name%22%3A%22Abzensi%20SMA%20Unggulan%20Abu%20Zairi%22%2C%22short_name%22%3A%22Abzensi%20SMA%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23fcfaf5%22%2C%22theme_color%22%3A%22%23f59e0b%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22https%3A%2F%2Fi.ibb.co.com%2FJwpFHfqM%2FIcon-App-Absen-SMA.png%22%2C%22sizes%22%3A%22192x192%22%2C%22type%22%3A%22image%2Fpng%22%7D%2C%7B%22src%22%3A%22https%3A%2F%2Fi.ibb.co.com%2FJwpFHfqM%2FIcon-App-Absen-SMA.png%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fpng%22%7D%5D%7D'>
+
     <script>
         window.onerror = function(msg, url, line) { console.error("Error Baris " + line + ": " + msg); return false; };
     </script>
@@ -32,11 +44,18 @@
         .view-section { display: none; opacity: 0; } .view-section.active { display: block; opacity: 1; animation: fadeInUp 0.5s forwards; }
         .tab-content { display: none; } .tab-content.active { display: block; animation: fadeInUp 0.5s forwards; }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Splash Screen Animasi (Disesuaikan dengan warna Amber/Kuning SMA) */
+        #splash-screen { position: fixed; inset: 0; z-index: 999999; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #f8fafc; transition: opacity 0.6s ease, visibility 0.6s ease; }
+        .dark #splash-screen { background: #0f172a; }
+        .splash-logo { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; animation: splashPulse 2s infinite ease-in-out; box-shadow: 0 10px 25px -5px rgba(245,158,11,0.5); border: 4px solid #f59e0b; }
+        @keyframes splashPulse { 0%, 100% { transform: scale(1) translateY(0); } 50% { transform: scale(1.05) translateY(-10px); } }
+
         .glass-card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.7); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
         .dark .glass-card { background: rgba(30, 41, 59, 0.85); border: 1px solid rgba(51, 65, 85, 0.5); color: #f1f5f9; }
         .smooth-hover { transition: all 0.3s; } .smooth-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
         #reader { border: none !important; border-radius: 1rem; overflow: hidden; background: transparent; } #reader video { object-fit: cover; border-radius: 1rem; }
-        .scanner-frame { padding: 3px; background: linear-gradient(135deg, #0ea5e9, #0284c7); border-radius: 1.25rem; }
+        .scanner-frame { padding: 3px; background: linear-gradient(135deg, #f59e0b, #b45309); border-radius: 1.25rem; }
         .scanner-inner { background: #ffffff; border-radius: 1rem; overflow: hidden; position: relative; } .dark .scanner-inner { background: #1e293b; }
         ::-webkit-scrollbar { width: 6px; height: 6px; } ::-webkit-scrollbar-track { background: transparent; } ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; } .dark ::-webkit-scrollbar-thumb { background: #475569; }
         .print-only-signature { display: none !important; }
@@ -106,6 +125,17 @@
 </head>
 <body class="text-gray-800 antialiased min-h-screen flex flex-col bg-animated dark:bg-dark-bg">
 
+    <!-- Splash Screen -->
+    <div id="splash-screen">
+        <img src="https://i.ibb.co.com/JwpFHfqM/Icon-App-Absen-SMA.png" alt="Logo" class="splash-logo mb-5">
+        <h2 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-700 to-yellow-500 dark:from-amber-400 dark:to-yellow-200 tracking-widest uppercase">ABZENSI SMA</h2>
+        <div class="mt-6 flex space-x-2">
+            <div class="w-2.5 h-2.5 bg-amber-500 rounded-full animate-bounce" style="animation-delay: 0s"></div>
+            <div class="w-2.5 h-2.5 bg-amber-500 rounded-full animate-bounce" style="animation-delay: 0.15s"></div>
+            <div class="w-2.5 h-2.5 bg-amber-500 rounded-full animate-bounce" style="animation-delay: 0.3s"></div>
+        </div>
+    </div>
+
     <noscript><div style="background: red; color: white; padding: 20px; text-align: center; font-weight: bold; z-index: 9999; position: relative;">JAVASCRIPT DIBLOKIR. Harap aktifkan Javascript di browser Anda.</div></noscript>
 
     <nav class="sticky top-0 z-50 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 shadow-lg text-white border-b-2 border-amber-500 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 dark:border-amber-600">
@@ -115,7 +145,7 @@
                 <div><h1 class="font-black text-lg tracking-wide leading-tight text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-yellow-500 drop-shadow-sm">ABZENSI</h1><p class="text-[9px] text-amber-100/70 uppercase tracking-widest font-bold dark:text-amber-500/80">SMA Unggulan Abu Zairi</p></div>
             </div>
             <div class="flex items-center space-x-4">
-                <div id="mobile-admin-info" class="hidden text-right md:hidden border-r border-amber-500/30 pr-4 mr-1"><h2 class="text-xs font-bold leading-tight truncate max-w-[100px] text-amber-400" id="admin-name-mobile">Admin</h2><p class="text-[8px] text-gray-400 uppercase tracking-widest font-semibold">Panel Admin</p></div>
+                <div id="mobile-admin-info" class="hidden text-right md:hidden border-r border-amber-500/30 pr-4 mr-1"><h2 class="text-xs font-bold leading-tight whitespace-normal max-w-[160px] text-amber-400" id="admin-name-mobile">Admin</h2><p id="admin-role-mobile" class="text-[8px] text-gray-400 uppercase tracking-widest font-semibold mt-0.5">Panel Admin</p></div>
                 <button type="button" data-action="gantiTema" class="text-amber-200 hover:text-white smooth-hover bg-white/10 p-2 rounded-full w-9 h-9 flex items-center justify-center focus:outline-none border border-amber-500/20"><i id="theme-icon" class="fa-solid fa-moon pointer-events-none"></i></button>
             </div>
         </div>
@@ -210,7 +240,7 @@
             <div class="hidden md:flex glass-card rounded-2xl p-4 w-full mb-6 mt-2 justify-between items-center relative z-10 print:hidden shadow-sm">
                 <div class="flex items-center space-x-4">
                     <div class="w-12 h-12 rounded-full bg-brand-100 dark:bg-gray-700 flex items-center justify-center text-brand-700 dark:text-brand-400 font-bold text-xl shadow-sm"><i class="fa-solid fa-user-tie"></i></div>
-                    <div><h2 class="text-base font-bold text-gray-800 dark:text-white leading-tight" id="admin-name">Halo, Admin</h2><p class="text-[10px] text-brand-600 dark:text-gray-400 font-semibold uppercase tracking-widest">Pusat Manajemen</p></div>
+                    <div><h2 class="text-base font-bold text-gray-800 dark:text-white leading-tight" id="admin-name">Halo, Admin</h2><p id="admin-role" class="text-[10px] text-brand-600 dark:text-gray-400 font-semibold uppercase tracking-widest">Pusat Manajemen</p></div>
                 </div>
                 <div class="flex bg-gray-50 dark:bg-gray-800/80 p-1.5 rounded-xl border border-gray-200 dark:border-gray-700 shadow-inner">
                     <button type="button" data-action="keTab" data-target="tab-dashboard" class="tab-btn active px-4 py-2.5 text-xs font-semibold rounded-lg text-gray-500 data-[active=true]:bg-white data-[active=true]:text-brand-700 dark:data-[active=true]:bg-gray-700 dark:data-[active=true]:text-white smooth-hover transition-colors" data-active="true"><i class="fa-solid fa-chart-pie mr-2 pointer-events-none"></i>Dashboard</button>
@@ -223,7 +253,10 @@
 
             <div id="tab-dashboard" class="tab-content active w-full">
                 <div class="flex justify-between items-center mb-6 mt-2">
-                    <h3 class="text-xl font-extrabold text-gray-800 dark:text-white"><i class="fa-solid fa-chart-pie mr-2 text-brand-500"></i> Dashboard</h3>
+                    <h3 class="text-xl font-extrabold text-gray-800 dark:text-white flex items-center">
+                        <i class="fa-solid fa-chart-pie mr-2 text-brand-500"></i> Dashboard
+                        <button type="button" data-action="refreshDashboard" class="ml-3 text-[10px] text-gray-400 hover:text-brand-500 bg-gray-100 dark:bg-gray-800 hover:bg-brand-50 dark:hover:bg-gray-700 px-2 py-1 rounded-md transition-colors smooth-hover shadow-sm" title="Segarkan Data"><i class="fa-solid fa-rotate-right pointer-events-none"></i></button>
+                    </h3>
                     <div class="flex items-center space-x-2 bg-white dark:bg-gray-800 px-3 py-1.5 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm relative z-30 smooth-hover">
                         <i class="fa-solid fa-calendar-days text-brand-500 text-sm"></i>
                         <select id="global-tahun-dashboard" data-action="ubahTahunDashboard" class="bg-transparent text-sm font-bold outline-none cursor-pointer text-gray-700 dark:text-gray-200 pr-2 appearance-none pl-1">
@@ -483,6 +516,7 @@
             </div>
 
             <div id="tab-setup" class="tab-content w-full">
+                <!-- Setup Content -->
                 <div class="glass-card rounded-2xl p-8 mb-4 max-w-3xl mx-auto shadow-lg">
                     <div class="text-center border-b border-gray-200 dark:border-gray-700 pb-6 mb-6">
                         <div class="w-16 h-16 rounded-full bg-brand-50 dark:bg-gray-800 flex items-center justify-center mx-auto mb-4 text-brand-600 text-2xl shadow-inner border border-brand-100 dark:border-gray-700"><i class="fa-solid fa-gears"></i></div>
@@ -546,7 +580,8 @@
                             </div>
                         </div>
 
-                        <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
+                        <!-- Panel API WhatsApp (Akan disembunyikan jika bukan Super Admin) -->
+                        <div id="setup-wa-section" class="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm hidden">
                             <h4 class="font-bold text-gray-800 dark:text-white mb-4 text-sm flex items-center"><i class="fa-brands fa-whatsapp text-emerald-500 mr-2.5 text-lg"></i> Integrasi API WhatsApp</h4>
                             <div class="space-y-4">
                                 <div>
@@ -583,47 +618,21 @@
     </main>
 
     <script>
-        // ================= KUMPULAN FUNGSI UTILITAS & API =================
-        
-        // PENTING: URL Web App dari Google Apps Script
-        const API_URL = 'https://script.google.com/macros/s/AKfycbzOSj_VcvgxpzmzWBYUzUnf7poy1xlo5MmPXXSqvIzOttKwQjATvlWWgKsALG6gNCUqNA/exec';
+        // =========================================================================
+        // URL WEB APP GOOGLE APPS SCRIPT SUDAH DIPERBARUI KE LINK TERBARU
+        // =========================================================================
+        const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzc644A4I1SRICiJTU08QCseYhrnMyt7aqg9Bwy3zbz3Sk242Kmjort0neUs8GP6qDOtg/exec"; 
 
+        // ================= KUMPULAN FUNGSI UTILITAS & API =================
         var State = {
             kamera: null, kameraAktif: false, nfcController: null,
             dataSiswa: [], dataSiswaAbsen: [], pChart: null, bChart: null,
             currentPageSiswa: 1, itemsPerPageSiswa: 10,
             dataLogIndividu: [], currentPageLogIndividu: 1, itemsPerPageLogIndividu: 12,
-            siswaLoaded: false, dashboardLoaded: false, rekapLogLoaded: false, setupLoaded: false,
-            waliKelasData: {}
-        };
-
-        // --- PENGGANTI GOOGLE.SCRIPT.RUN MENGGUNAKAN FETCH API ---
-        var Server = {
-            panggil: function(namaFungsi, args, sukses, gagal) {
-                if(!API_URL) {
-                    Swal.fire('Error', 'API URL belum disetting!', 'error');
-                    if (gagal) gagal('URL API Kosong');
-                    return;
-                }
-
-                const payload = { action: namaFungsi, args: args || [] };
-
-                fetch(API_URL, {
-                    method: 'POST',
-                    body: JSON.stringify(payload)
-                })
-                .then(response => response.json())
-                .then(res => {
-                    if (res.status === 'success') {
-                        if (sukses) sukses(res.data);
-                    } else {
-                        if (gagal) gagal(res.message || "Gagal mengeksekusi di server");
-                    }
-                })
-                .catch(err => {
-                    if (gagal) gagal("Koneksi Error: " + err.toString());
-                });
-            }
+            siswaLoaded: false, dashboardLoaded: false, rekapLogLoaded: false, setupLoaded: false, rekapLoaded: false,
+            roleAdmin: '', // Menampung hak akses untuk filter API WA
+            waliKelasData: {},
+            daftarKelas: [] // Cache Daftar Kelas
         };
 
         function getNamaBulan(m) {
@@ -655,6 +664,71 @@
             }
         };
 
+        // --- KOMUNIKASI FETCH API KE GOOGLE APPS SCRIPT ---
+        var Server = {
+            panggil: function(namaFungsi, args, sukses, gagal) {
+                if (GAS_WEB_APP_URL && GAS_WEB_APP_URL.startsWith("http")) {
+                    fetch(GAS_WEB_APP_URL, {
+                        redirect: "follow", 
+                        method: 'POST',
+                        headers: {
+                            "Content-Type": "text/plain;charset=utf-8",
+                        },
+                        body: JSON.stringify({ action: namaFungsi, args: args })
+                    })
+                    .then(response => {
+                        if (!response.ok) throw new Error("HTTP error " + response.status);
+                        return response.text();
+                    })
+                    .then(text => {
+                        try {
+                            return JSON.parse(text);
+                        } catch (e) {
+                            console.error("Format balasan invalid:", text);
+                            throw new Error("Format JSON gagal diparsing. Pastikan Deployment diset ke 'Anyone'!");
+                        }
+                    })
+                    .then(res => {
+                        if (res.status === 'success') {
+                            if (sukses) sukses(res.data);
+                        } else {
+                            if (gagal) gagal(res.message);
+                            else Swal.fire('Error', res.message, 'error');
+                        }
+                    })
+                    .catch(err => {
+                        console.error("Fetch API Error:", err);
+                        let errMsg = String(err);
+                        if (errMsg.includes('Failed to fetch') || errMsg.includes('NetworkError')) {
+                            errMsg = "Koneksi ke server Gagal. Pastikan Anda telah Deploy ulang Google Apps Script dengan opsi 'Who has access: Anyone' (Siapa saja)!";
+                        }
+                        if (gagal) gagal(errMsg);
+                        else Swal.fire('Koneksi Error', errMsg, 'error');
+                    });
+                } 
+                else {
+                    // Dummy simulasi jika URL kosong (tidak diubah)
+                    setTimeout(function(){ if (sukses) sukses([]); }, 300);
+                }
+            }
+        };
+
+        // --- SISTEM CACHING UNTUK OPTIMASI LOADING ---
+        function getDaftarKelasCache(callback) {
+            if (State.daftarKelas && State.daftarKelas.length > 0) {
+                callback(State.daftarKelas);
+            } else {
+                Server.panggil('getDaftarKelas', [], function(res) {
+                    State.daftarKelas = res || [];
+                    callback(State.daftarKelas);
+                }, function(err) {
+                    console.error("Gagal load kelas:", err);
+                    callback([]);
+                });
+            }
+        }
+
+        // ================= KUMPULAN FUNGSI TAMPILAN (UI) =================
         function gantiTema() {
             document.documentElement.classList.toggle('dark');
             var ico = document.getElementById('theme-icon');
@@ -690,7 +764,7 @@
             if (id === 'view-admin') {
                 if (mobNav) { mobNav.classList.remove('hidden'); mobNav.classList.add('flex'); }
                 if (mainFooter) { mainFooter.classList.add('hidden'); }
-                if (headerLogo) { headerLogo.src = 'https://i.ibb.co.com/YF1sfTm0/Logo-SMA-Unggulan-Abu-Zairi.jpg'; }
+                if (headerLogo) { headerLogo.src = 'https://i.ibb.co.com/SDjhdrTF/Logo-SMA-Unggulan-Abu-Zairi.png'; }
             } else {
                 if (mobNav) { mobNav.classList.add('hidden'); mobNav.classList.remove('flex'); }
                 if (mainFooter) { mainFooter.classList.remove('hidden'); }
@@ -711,7 +785,14 @@
             
             if (idTab === 'tab-dashboard') muatDashboard(false);
             if (idTab === 'tab-siswa') muatSiswa(false);
-            if (idTab === 'tab-rekap') { initFilterRekap(); submitRekap(); muatPengaturanSistem(true); } 
+            if (idTab === 'tab-rekap') { 
+                initFilterRekap(); 
+                if (!State.rekapLoaded) {
+                    submitRekap(); 
+                    State.rekapLoaded = true;
+                }
+                muatPengaturanSistem(false); 
+            } 
             if (idTab === 'tab-setup') muatPengaturanSistem(false);
         }
 
@@ -734,6 +815,7 @@
             }
         }
 
+        // ================= KUMPULAN FUNGSI OTENTIKASI & ABSEN =================
         function prosesLogin() {
             var niy = document.getElementById('input-niy').value;
             if (!niy) return Swal.fire('Peringatan', 'Harap isi NIY', 'warning');
@@ -742,20 +824,36 @@
             
             Server.panggil('loginAdmin', [niy], function(res) {
                 btn.innerHTML = teksAsli; btn.disabled = false;
-                if (res && res.status === 'success') {
+                if (res && (res.status === 'success' || res.nama)) {
                     document.getElementById('input-niy').value = '';
-                    document.getElementById('admin-name').innerText = 'Admin: ' + res.nama;
-                    var admMob = document.getElementById('admin-name-mobile'); if (admMob) admMob.innerText = res.nama;
+                    document.getElementById('admin-name').innerText = 'Halo, ' + (res.nama || 'Admin');
+                    var admMob = document.getElementById('admin-name-mobile'); if (admMob) admMob.innerText = res.nama || 'Admin';
+                    
+                    var roleVal = res.role || 'Panel Admin';
+                    State.roleAdmin = roleVal; // Simpan role ke memori State
+                    
+                    var roleMob = document.getElementById('admin-role-mobile'); if (roleMob) roleMob.innerText = roleVal;
+                    var roleDesk = document.getElementById('admin-role'); if (roleDesk) roleDesk.innerText = roleVal;
+
+                    // Logika untuk menyembunyikan/menampilkan fitur API WA
+                    var waSection = document.getElementById('setup-wa-section');
+                    if (waSection) {
+                        if (roleVal.toLowerCase() === 'super admin') waSection.classList.remove('hidden');
+                        else waSection.classList.add('hidden');
+                    }
+
                     var infoMob = document.getElementById('mobile-admin-info'); if (infoMob) { infoMob.classList.remove('hidden'); infoMob.classList.add('block'); }
                     keHalaman('view-admin'); keTab('tab-dashboard'); muatPengaturanSistem(true); 
-                } else Swal.fire('Gagal', res ? res.message : 'NIY Salah', 'error');
+                } else {
+                    Swal.fire('Gagal', typeof res === 'string' ? res : (res.message || 'NIY Salah'), 'error');
+                }
             }, function(err) { btn.innerHTML = teksAsli; btn.disabled = false; Swal.fire('Error', String(err), 'error'); });
         }
 
         function keluarAdmin() {
             var infoMob = document.getElementById('mobile-admin-info');
             if (infoMob) { infoMob.classList.add('hidden'); infoMob.classList.remove('block'); }
-            State.siswaLoaded = false; State.dashboardLoaded = false; State.rekapLogLoaded = false; State.setupLoaded = false;
+            State.siswaLoaded = false; State.dashboardLoaded = false; State.rekapLogLoaded = false; State.setupLoaded = false; State.rekapLoaded = false; State.roleAdmin = '';
             
             var inpWali = document.getElementById('setup-wali');
             if (inpWali) { inpWali.value = ''; inpWali.disabled = true; }
@@ -856,18 +954,22 @@
         function kirimAbsen(nisn, dariKamera) {
             Swal.fire({ title: 'Memproses...', allowOutsideClick: false, didOpen: function() { Swal.showLoading(); } });
             Server.panggil('catatAbsensi', [nisn], function(res) {
-                if(res && res.status === 'success') {
-                    Swal.fire({ icon: 'success', title: 'Tercatat!', text: res.message, timer: 2000, showConfirmButton: false });
+                if(res && (res.status === 'success' || res.message)) {
+                    Swal.fire({ icon: 'success', title: 'Tercatat!', text: res.message || res, timer: 2000, showConfirmButton: false });
                     if (dariKamera) {
                         setTimeout(function() { bukaKamera(); }, 2500); 
                     }
                     muatAbsenHariIni(true);
-                } else Swal.fire('Gagal', res ? res.message : 'Siswa tidak ditemukan/Sudah Absen', 'error');
-            }, function(err) { Swal.fire('Error', String(err), 'error'); });
+                } else Swal.fire('Gagal', res ? (res.message || res) : 'Siswa tidak ditemukan/Sudah Absen', 'error');
+            }, function(err) { Swal.fire('Gagal/Error', String(err), 'error'); });
         }
 
         function muatDataSiswaDropdown() {
-            Server.panggil('getDataSiswa', [], function(data) { State.dataSiswaAbsen = data || []; }, function(err) { console.error(err); });
+            Server.panggil('getDataSiswa', [], function(data) { 
+                State.dataSiswaAbsen = data || []; 
+            }, function(err) { 
+                console.error("Dropdown Error:", err); 
+            });
         }
 
         function renderDropdownSiswa(kataKunci) {
@@ -930,6 +1032,8 @@
                             '</li>';
                 }
                 list.innerHTML = isi;
+            }, function(err) {
+                if(list) list.innerHTML = '<li class="p-5 text-center text-rose-500 text-xs italic">Koneksi Error: ' + err + '</li>';
             });
         }
 
@@ -967,11 +1071,17 @@
                     isi += '<li class="p-4 flex justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"><div class="flex items-center space-x-4"><div class="h-10 w-10 rounded-full ' + bg + ' ' + color + ' flex items-center justify-center text-xs shadow-sm"><i class="fa-solid ' + icon + '"></i></div><div><p class="text-xs font-bold text-gray-800 dark:text-gray-200">' + r.nama + '</p><p class="text-[10px] text-gray-500">' + r.kelas + ' &bull; ' + r.waktu + '</p></div></div><div class="text-right"><span class="px-2.5 py-1 rounded border border-current text-[9px] font-bold uppercase ' + color + ' ' + bg + '">' + r.status + '</span></div></li>';
                 }
                 list.innerHTML = isi;
+            }, function(err){
+                list.innerHTML = '<li class="p-4 text-center text-rose-500 text-xs">Error memuat log.</li>';
             });
         }
 
         function muatDashboard(forceRefresh, tahunTerpilih) {
             muatLogDashboard(forceRefresh); 
+            
+            // OPTIMASI: Return langsung jika dashboard sudah dimuat dan tidak ada paksaan refresh
+            if (State.dashboardLoaded && !forceRefresh && !tahunTerpilih) return;
+            
             var tahunReq = tahunTerpilih || new Date().getFullYear();
             var selTahun = document.getElementById('global-tahun-dashboard');
             if (selTahun && (!selTahun.getAttribute('data-init') || forceRefresh)) selTahun.innerHTML = '<option>Memuat...</option>';
@@ -1083,16 +1193,21 @@
             Swal.fire({ title: 'Kelas Baru', input: 'text', placeholder: 'Contoh: VII-C', showCancelButton: true, confirmButtonText: 'Simpan', background: document.documentElement.classList.contains('dark') ? '#1e293b' : '#fff', color: document.documentElement.classList.contains('dark') ? '#f1f5f9' : '#1f2937' }).then(function(r) {
                 if(r.isConfirmed && r.value) {
                     Swal.fire({title: 'Menyimpan...', didOpen: function() { Swal.showLoading(); }});
-                    Server.panggil('tambahKelas', [r.value], function(res) { Swal.fire('Berhasil', res.message, 'success'); });
+                    Server.panggil('tambahKelas', [r.value], function(res) { 
+                        State.daftarKelas = []; // Hapus cache agar load ulang kelas baru
+                        Swal.fire('Berhasil', res.message || res, 'success'); 
+                        initFilterRekap(true); // Update dropdown di rekap
+                    });
                 }
             });
         }
 
-        function tambahAdmin() { alert('Tambahkan Admin di Google Sheets (Sheet Data_Admin).'); }
-        function bukaFolder() { window.open('https://drive.google.com/drive/folders/1d6qFIYXnGVmxdGPkJf_mNeLchmUuvifa', '_blank'); }
-
         function tambahSiswa() {
-            Server.panggil('getDaftarKelas', [], function(dk) {
+            if (!State.daftarKelas || State.daftarKelas.length === 0) {
+                Swal.fire({title: 'Menyiapkan Form...', allowOutsideClick: false, didOpen: function() { Swal.showLoading(); }});
+            }
+            getDaftarKelasCache(function(dk) {
+                if (Swal.isVisible() && Swal.getTitle().textContent === 'Menyiapkan Form...') Swal.close();
                 var op = '<option value="">-- Pilih --</option>';
                 if(dk) { for(var i=0; i<dk.length; i++) { op += '<option value="' + dk[i] + '">' + dk[i] + '</option>'; } }
                 var isiHTML = '<div class="space-y-2 mt-1 text-left"><div class="flex flex-col items-center mb-3"><div class="w-16 h-16 rounded-full bg-gray-200 dark:bg-gray-700 border-2 border-brand-500 overflow-hidden flex items-center justify-center mb-2 shadow-sm"><img id="preview-foto" src="https://ui-avatars.com/api/?name=Siswa&background=random" class="w-full h-full object-cover"></div><input type="hidden" id="s-foto-b64" value=""><label class="cursor-pointer text-[10px] bg-brand-100 text-brand-600 px-3 py-1 rounded-full font-bold hover:bg-brand-200 smooth-hover shadow-sm"><i class="fa-solid fa-camera mr-1"></i> Pilih Foto <input type="file" accept="image/*" class="hidden" onchange="compressImage(this)"></label></div><div><label class="text-[11px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1 block">NISN</label><input id="s-n" type="text" inputmode="numeric" pattern="[0-9]*" class="w-full border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-black dark:text-white rounded-xl p-3 outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 text-sm transition-all" placeholder="Masukkan NISN"></div><div><label class="text-[11px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1 block">Nama Lengkap</label><input id="s-nm" type="text" class="w-full border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-black dark:text-white rounded-xl p-3 outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 text-sm transition-all" placeholder="Nama Lengkap"></div><div><label class="text-[11px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1 block">Kelas</label><select id="s-k" class="w-full border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-black dark:text-white rounded-xl p-3 outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 text-sm transition-all">' + op + '</select></div><div><label class="text-[11px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1 block">No. WA</label><input id="s-w" type="text" inputmode="numeric" pattern="[0-9]*" value="" class="w-full border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-black dark:text-white rounded-xl p-3 outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 text-sm transition-all" placeholder="Contoh: 0812..."></div><div class="pt-2"><label class="text-[11px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1 block">UID RFID / NFC (Opsional)</label><div class="flex space-x-2"><input id="s-rfid" type="text" class="flex-grow border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-black dark:text-white rounded-xl p-3 outline-none focus:border-brand-500 text-sm transition-all" placeholder="ID Kartu NFC"><button type="button" id="btn-baca-nfc" onclick="bacaNFCPendaftaran(\'s-rfid\')" class="bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-400 px-3 py-2 rounded-xl text-xs font-bold whitespace-nowrap"><i class="fa-solid fa-wifi mr-1"></i> Tap NFC</button></div></div></div>';
@@ -1108,7 +1223,7 @@
                     if (h.isConfirmed) {
                         matikanNFC();
                         Swal.fire({title: 'Menyimpan...', didOpen: function() { Swal.showLoading(); }});
-                        Server.panggil('tambahSiswa', [h.value], function(res) { Swal.fire('Sukses', res.message, 'success'); muatSiswa(true); muatDataSiswaDropdown(); });
+                        Server.panggil('tambahSiswa', [h.value], function(res) { Swal.fire('Sukses', res.message || res, 'success'); muatSiswa(true); muatDataSiswaDropdown(); });
                     }
                 });
             });
@@ -1116,7 +1231,11 @@
 
         function editSiswa(idx) {
             var dt = State.dataSiswa[idx];
-            Server.panggil('getDaftarKelas', [], function(dk) {
+            if (!State.daftarKelas || State.daftarKelas.length === 0) {
+                Swal.fire({title: 'Menyiapkan Form...', allowOutsideClick: false, didOpen: function() { Swal.showLoading(); }});
+            }
+            getDaftarKelasCache(function(dk) {
+                if (Swal.isVisible() && Swal.getTitle().textContent === 'Menyiapkan Form...') Swal.close();
                 var op = '';
                 if(dk) { for(var i=0; i<dk.length; i++) { op += '<option value="' + dk[i] + '" ' + (dk[i]===dt.kelas?'selected':'') + '>' + dk[i] + '</option>'; } }
                 var currentImg = dt.foto || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(dt.nama) + '&background=random';
@@ -1134,7 +1253,7 @@
                     if (h.isConfirmed) {
                         matikanNFC();
                         Swal.fire({title: 'Memperbarui...', didOpen: function() { Swal.showLoading(); }});
-                        Server.panggil('editSiswa', [h.value], function(res) { Swal.fire('Tersimpan', res.message, 'success'); muatSiswa(true); muatDataSiswaDropdown(); });
+                        Server.panggil('editSiswa', [h.value], function(res) { Swal.fire('Tersimpan', res.message || res, 'success'); muatSiswa(true); muatDataSiswaDropdown(); });
                     }
                 });
             });
@@ -1144,7 +1263,7 @@
             Swal.fire({ title: 'Hapus', html: 'Yakin menghapus <b>' + nama + '</b>?', icon: 'warning', showCancelButton: true, confirmButtonColor: '#ef4444', confirmButtonText: 'Ya' }).then(function(r) { 
                 if (r.isConfirmed) { 
                     Swal.fire({title: 'Menghapus...', didOpen: function() { Swal.showLoading(); }});
-                    Server.panggil('hapusSiswa', [nisn], function(res) { Swal.fire('Dihapus', res.message, 'success'); muatSiswa(true); muatDataSiswaDropdown(); }); 
+                    Server.panggil('hapusSiswa', [nisn], function(res) { Swal.fire('Dihapus', res.message || res, 'success'); muatSiswa(true); muatDataSiswaDropdown(); }); 
                 } 
             });
         }
@@ -1156,7 +1275,7 @@
             Swal.fire({ title: 'Hapus ' + nArr.length + ' Siswa?', icon: 'warning', showCancelButton: true, confirmButtonColor: '#ef4444', confirmButtonText: 'Ya' }).then(function(r) { 
                 if (r.isConfirmed) { 
                     Swal.fire({title: 'Menghapus...', didOpen: function() { Swal.showLoading(); }});
-                    Server.panggil('hapusBanyakSiswa', [nArr], function(res) { Swal.fire('Dihapus', res.message, 'success'); muatSiswa(true); muatDataSiswaDropdown(); }); 
+                    Server.panggil('hapusBanyakSiswa', [nArr], function(res) { Swal.fire('Dihapus', res.message || res, 'success'); muatSiswa(true); muatDataSiswaDropdown(); }); 
                 } 
             });
         }
@@ -1165,18 +1284,29 @@
             if (State.siswaLoaded && !forceRefresh) { renderTabelSiswa(); return; }
             var t = document.getElementById('tabel-siswa'); document.getElementById('btn-hapus-masal').classList.add('hidden');
             var paginationInfo = document.getElementById('pagination-siswa');
+            
+            // OPTIMASI: Gunakan data cache (dari dropdown pencarian siswa) untuk bypass loading server
+            if (!forceRefresh && State.dataSiswaAbsen && State.dataSiswaAbsen.length > 0) {
+                State.dataSiswa = State.dataSiswaAbsen;
+                State.currentPageSiswa = 1;
+                State.siswaLoaded = true;
+                renderTabelSiswa();
+                return;
+            }
+
             if (!State.siswaLoaded) { if(paginationInfo) paginationInfo.classList.add('hidden'); t.innerHTML = '<tr><td colspan="7" class="px-4 py-8 text-center text-gray-400"><i class="fa-solid fa-spinner fa-spin mr-2"></i>Memuat...</td></tr>'; }
             
             Server.panggil('getDataSiswa', [], function(data) {
                 State.dataSiswa = data || [];
+                State.dataSiswaAbsen = data || []; // Update cache sekalian
                 if (!State.siswaLoaded || forceRefresh) State.currentPageSiswa = 1;
                 State.siswaLoaded = true; renderTabelSiswa();
-            }, function(err) { if (!State.siswaLoaded) t.innerHTML = '<tr><td colspan="7" class="text-center text-rose-500 p-4">Error memuat data</td></tr>'; });
+            }, function(err) { if (!State.siswaLoaded) t.innerHTML = '<tr><td colspan="7" class="text-center text-rose-500 p-4">Error memuat data: ' + err + '</td></tr>'; });
         }
 
 
         // ================= KUMPULAN FUNGSI REKAPITULASI & CETAK =================
-        function initFilterRekap() {
+        function initFilterRekap(forceRefreshKelas) {
             var cbBulan = document.getElementById('filter-bulan');
             var cbTahun = document.getElementById('filter-tahun');
             var cbTahunIndividu = document.getElementById('filter-tahun-individu');
@@ -1197,8 +1327,8 @@
             var cbKelasInd = document.getElementById('filter-kelas-individu');
             var cbSetupWali = document.getElementById('setup-kelas-wali');
 
-            if (cbKelas && cbKelas.options.length <= 1) {
-                Server.panggil('getDaftarKelas', [], function(res) {
+            if (forceRefreshKelas || (cbKelas && cbKelas.options.length <= 1)) {
+                getDaftarKelasCache(function(res) {
                     var optSemua = '<option value="Semua">Semua Kelas</option>';
                     var optPilih = '<option value="">-- Pilih Kelas --</option>';
                     var optBody = '';
@@ -1221,10 +1351,8 @@
             }
 
             sel.disabled = false;
-            sel.innerHTML = '<option value="">Memuat...</option>';
-
-            Server.panggil('getDataSiswa', [], function(data) {
-                State.dataSiswaAbsen = data || [];
+            
+            function renderSelect(data) {
                 var html = '<option value="">-- Pilih Siswa --</option>';
                 var sorted = data.sort(function(a,b){ return a.nama.localeCompare(b.nama); });
                 var ada = false;
@@ -1237,7 +1365,17 @@
                 }
                 if (!ada) html = '<option value="">-- Tidak ada siswa di kelas ini --</option>';
                 sel.innerHTML = html;
-            });
+            }
+
+            if (State.dataSiswaAbsen && State.dataSiswaAbsen.length > 0) {
+                renderSelect(State.dataSiswaAbsen);
+            } else {
+                sel.innerHTML = '<option value="">Memuat...</option>';
+                Server.panggil('getDataSiswa', [], function(data) {
+                    State.dataSiswaAbsen = data || [];
+                    renderSelect(State.dataSiswaAbsen);
+                });
+            }
         }
 
         function jalankanCetakPDF(mode) {
@@ -1703,8 +1841,8 @@
 
             Swal.fire({title: 'Menyimpan...', didOpen: function() { Swal.showLoading(); }});
             Server.panggil('simpanPengaturan', [payload], function(res) {
-                if(res && res.status === 'success') {
-                    Swal.fire('Berhasil', res.message, 'success');
+                if(res && (res.status === 'success' || res.message)) {
+                    Swal.fire('Berhasil', res.message || res, 'success');
                     var dispBatasMulai = document.getElementById('display-batas-mulai');
                     var dispBatas = document.getElementById('display-batas-waktu');
                     var dispBatasAkhir = document.getElementById('display-batas-akhir');
@@ -1713,7 +1851,7 @@
                     if(dispBatasAkhir) dispBatasAkhir.innerText = batasAkhir;
                     
                     muatPengaturanSistem(true); 
-                } else Swal.fire('Gagal', res ? res.message : 'Terjadi kesalahan', 'error');
+                } else Swal.fire('Gagal', res ? (res.message || res) : 'Terjadi kesalahan', 'error');
             }, function(err) { Swal.fire('Error', String(err), 'error'); });
         }
 
@@ -1776,11 +1914,22 @@
         }
 
         function modalInputIzin() {
-            Swal.fire({ title: 'Memuat data...', allowOutsideClick: false, didOpen: function() { Swal.showLoading(); } });
+            if (!State.dataSiswaAbsen || State.dataSiswaAbsen.length === 0 || !State.daftarKelas || State.daftarKelas.length === 0) {
+                Swal.fire({ title: 'Memuat data...', allowOutsideClick: false, didOpen: function() { Swal.showLoading(); } });
+            }
 
-            Server.panggil('getDataSiswa', [], function(dataSiswa) {
-                State.dataSiswaAbsen = dataSiswa || [];
-                Server.panggil('getDaftarKelas', [], function(dataKelas) {
+            function getDataSiswaCache(cb) {
+                if (State.dataSiswaAbsen && State.dataSiswaAbsen.length > 0) cb(State.dataSiswaAbsen);
+                else {
+                    Server.panggil('getDataSiswa', [], function(res) {
+                        State.dataSiswaAbsen = res || []; cb(State.dataSiswaAbsen);
+                    }, function() { cb([]); });
+                }
+            }
+
+            getDataSiswaCache(function(dataSiswa) {
+                getDaftarKelasCache(function(dataKelas) {
+                    if (Swal.isVisible() && Swal.getTitle().textContent === 'Memuat data...') Swal.close();
                     var opKelas = '<option value="">-- Pilih Kelas --</option>';
                     if(dataKelas) { for(var i=0; i<dataKelas.length; i++) opKelas += '<option value="' + dataKelas[i] + '">' + dataKelas[i] + '</option>'; }
 
@@ -1806,8 +1955,8 @@
                         if (h.isConfirmed) {
                             Swal.fire({title: 'Menyimpan...', didOpen: function() { Swal.showLoading(); }});
                             Server.panggil('inputIzinSiswa', [h.value], function(res) { 
-                                if(res && res.status === 'success') { Swal.fire('Berhasil', res.message, 'success'); muatDashboard(true); muatAbsenHariIni(true); } 
-                                else Swal.fire('Gagal', res ? res.message : 'Terjadi Kesalahan', 'error');
+                                if(res && (res.status === 'success' || res.message)) { Swal.fire('Berhasil', res.message || res, 'success'); muatDashboard(true); muatAbsenHariIni(true); } 
+                                else Swal.fire('Gagal', res ? (res.message || res) : 'Terjadi Kesalahan', 'error');
                             }, function(err) { Swal.fire('Error', String(err), 'error'); });
                         }
                     });
@@ -1829,6 +1978,12 @@
             
             var aksi = elemen.getAttribute('data-action');
             if (aksi === 'gantiTema') gantiTema();
+            else if (aksi === 'refreshDashboard') {
+                var iconBtn = elemen.querySelector('i');
+                if (iconBtn) iconBtn.classList.add('fa-spin');
+                muatDashboard(true);
+                setTimeout(function() { if (iconBtn) iconBtn.classList.remove('fa-spin'); }, 1000);
+            }
             else if (aksi === 'keHalaman') keHalaman(elemen.getAttribute('data-target'));
             else if (aksi === 'keTab') keTab(elemen.getAttribute('data-target'));
             else if (aksi === 'bukaKamera') bukaKamera();
@@ -1850,7 +2005,7 @@
             else if (aksi === 'modalInputIzin') modalInputIzin();
             else if (aksi === 'simpanPengaturanSistem') simpanPengaturanSistem();
             else if (aksi === 'tambahAdmin') { if(typeof Swal !== 'undefined') Swal.fire('Info', 'Tambahkan Admin di Google Sheets.', 'info'); else alert('Info: Tambahkan di Google Sheets'); }
-            else if (aksi === 'bukaFolder') window.open('https://drive.google.com/drive/folders/1d6qFIYXnGVmxdGPkJf_mNeLchmUuvifa', '_blank');
+            else if (aksi === 'bukaFolder') window.open('https://drive.google.com/drive/folders/1S_heRm5OpqRT3m3P3khPGPOTVFFzBtYP', '_blank');
             else if (aksi === 'editSiswa') editSiswa(elemen.getAttribute('data-idx'));
             else if (aksi === 'hapusSiswaPribadi') hapusSiswaPribadi(elemen.getAttribute('data-nisn'), elemen.getAttribute('data-nama'));
             else if (aksi === 'prevSiswa') prevSiswa();
@@ -1877,6 +2032,16 @@
             if (typeof Swal === 'undefined') { window.Swal = { fire: function(a,b) { alert(a+"\n"+(b||"")); return Promise.resolve({isConfirmed:true, value:true}); }, showLoading: function(){}, showValidationMessage: function(msg) { alert(msg); } }; }
             aturTemaAwal(); initFilterRekap();
             setTimeout(function() { muatAbsenHariIni(true); muatDataSiswaDropdown(); setupDropdownEvent(); }, 500);
+
+            // Menghilangkan Splash Screen dengan transisi halus setelah 1.5 detik
+            setTimeout(function() {
+                var splash = document.getElementById('splash-screen');
+                if (splash) {
+                    splash.style.opacity = '0';
+                    splash.style.visibility = 'hidden';
+                    setTimeout(function() { splash.remove(); }, 600);
+                }
+            }, 1500);
         });
     </script>
 </body>
